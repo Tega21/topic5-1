@@ -1,7 +1,7 @@
-package com.gcu.topic42;
+package com.gcu.topic51;
 
-import com.gcu.topic42.business.OrdersBusinessService;
-import com.gcu.topic42.business.OrdersBusinessServiceInterface;
+import com.gcu.topic51.business.OrdersBusinessService;
+import com.gcu.topic51.business.OrdersBusinessServiceInterface;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

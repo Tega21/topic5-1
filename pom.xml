@@ -16,7 +16,7 @@
     <artifactId>topic5-1</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>topic5-1</name>
-    <description>Spring Boot Activity 5 Project</description>
+    <description>Spring Boot Activity 5 Project - MongoDB Integration</description>
 
     <properties>
         <java.version>17</java.version>
@@ -54,7 +54,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- JAXB dependencies -->
+        <!-- JAXB dependencies for XML support -->
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
@@ -65,7 +65,7 @@
             <artifactId>jaxb-runtime</artifactId>
         </dependency>
 
-        <!-- MongoDB Spring Boot Starter (ADDED) -->
+        <!-- MongoDB Spring Boot Starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
@@ -74,6 +74,7 @@
     </dependencies>
 
     <build>
+        <finalName>cst339activity</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

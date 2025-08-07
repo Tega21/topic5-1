@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class OrdersDataService implements DataAccessInterface<OrderModel> {
+public class OrderDataService implements DataAccessInterface<OrderModel> {
 
     @Autowired
     private OrdersRepository ordersRepository;
