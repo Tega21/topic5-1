@@ -28,6 +28,17 @@ public class OrdersBusinessService implements OrdersBusinessServiceInterface {
         return dataService.findAll();
     }
 
+    /**
+     * Get a single order by ID
+     * @param id the order ID
+     * @return OrderModel if found, null otherwise
+     */
+    @Override
+    public OrderModel getOrderById(String id) {
+        // Call findById from the dataService
+        return dataService.findById(id);
+    }
+
     @Override
     public void init() {
         System.out.println("OrdersBusinessService: init() called");

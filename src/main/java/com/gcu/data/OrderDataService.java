@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderDataService implements DataAccessInterface<OrderModel> {
@@ -36,7 +37,19 @@ public class OrderDataService implements DataAccessInterface<OrderModel> {
 
     @Override
     public OrderModel findById(String id) {
-        // For now, return null as specified in assignment
+        // Call the getOrderById method from ordersRepository
+        Optional<OrderEntity> entity = ordersRepository.getOrderById(id);
+
+        if (entity.isPresent()) {
+            OrderEntity orderEntity = entity.get();
+            return new OrderModel(
+                    orderEntity.getId(),
+                    orderEntity.getOrderNo(),
+                    orderEntity.getProductName(),
+                    orderEntity.getPrice(),
+                    orderEntity.getQuantity()
+            );
+        }
         return null;
     }
 
@@ -59,13 +72,36 @@ public class OrderDataService implements DataAccessInterface<OrderModel> {
 
     @Override
     public boolean update(OrderModel order) {
-        // For now, return true as specified in assignment
-        return true;
+        try {
+            if (order.getId() != null && ordersRepository.existsById(order.getId())) {
+                OrderEntity orderEntity = new OrderEntity();
+                orderEntity.setId(order.getId());
+                orderEntity.setOrderNo(order.getOrderNo());
+                orderEntity.setProductName(order.getProductName());
+                orderEntity.setPrice(order.getPrice());
+                orderEntity.setQuantity(order.getQuantity());
+
+                ordersRepository.save(orderEntity);
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
     public boolean delete(OrderModel order) {
-        // For now, return true as specified in assignment
-        return true;
+        try {
+            if (order.getId() != null && ordersRepository.existsById(order.getId())) {
+                ordersRepository.deleteById(order.getId());
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

@@ -1,7 +1,6 @@
-package com.gcu.topic42.business;
+package com.gcu.topic51.business;
 
 import com.gcu.model.OrderModel;
-import com.gcu.topic51.business.OrdersBusinessServiceInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +24,12 @@ public class AnotherOrdersBusinessService implements OrdersBusinessServiceInterf
         orders.add(new OrderModel("5", "005", "Dog Food", 30.99f, 5));
 
         return orders;
+    }
+
+    @Override
+    public OrderModel getOrderById(String id) {
+        // Simply return null as specified
+        return null;
     }
 
     @Override
